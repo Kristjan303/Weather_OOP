@@ -1,29 +1,11 @@
-document.addEventListener(`DOMContentLoaded`, cityWeather)
+const weather = new Weather(`Tallinn`)
 
-function weatherDataFetch(city){
-    var key = "5919524c963e97110290a856859fbdec";
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`)
-        .then(function (resp) {
-            return resp.json()
+function getWeather(){
+    weather.getWeather()
+        .then(data => {
+            console.log(data)
         })
-        .then(function (data) {
-            console.log(data);
-            drawWeather(data);
-        })
-        .catch(function () {
-
-        })
+            .catch(error => console.log(error))
 }
 
-function cityWeather(e) {
-    weatherDataFetch(`Kyoto`);
-}
-
-function drawWeather(data) {
-    var celcius = Math.round(parseFloat(data.main.temp) -273.15);
-    var description = data.weather[0].description;
-
-    document.querySelector(`#description`).innerHTML = description;
-    document.querySelector(`#temp`).innerHTML = celcius + `&deg;`;
-    document.querySelector(`#location`).innerHTML = data.name;
-}
+getWeather()
