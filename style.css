@@ -74,3 +74,13 @@ body {
     background-color: #efe8fc;
     border-radius: 25px;
 }
+
+#change-city {
+    background-color: #34333a;
+    color: white;
+    padding: 2rem;
+}
+
+#change-city:hover {
+    background-color: gray;
+}
